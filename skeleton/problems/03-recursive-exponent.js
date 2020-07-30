@@ -1,5 +1,5 @@
 /***********************************************************************
-Write a recursive function called `exponent` that takes two integers, 
+Write a recursive function called `exponent` that takes two integers,
 `num` and `power`, and returns `num` raised to the `power`th power. Your
 function should work when `num` or `power` are positive OR negative.
 
@@ -20,10 +20,27 @@ exponent(2, -2); // => 1/4 (or 0.25)
 factorial(5, 5); // => 3,125
 ***********************************************************************/
 
-function exponent(num, power) {
+//Base case: power === num
+//Recursive case: num * exponent(num, power -1)
+//Recuseive case:
 
+function exponent(num, power) {
+    if (power < 0) {
+        return (1 / exponent(num, Math.abs(power)))
+        //      1/            2             2
+    }
+    if ( power === 1){
+        return num
+    }
+    return num * exponent(num, power - 1);
+    //      3             ( 3,  2)    3 * (9) === 27
+    //      3             ( 3,  1)    3 * (3) === 9
+    //  power === 1 return 3
+    //
 }
-  
+
+// console.log(exponent(3, 3)); // => 9
+// exponent(2, -2); // => 1/4 (or 0.25)
+
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 module.exports = exponent;
-  
